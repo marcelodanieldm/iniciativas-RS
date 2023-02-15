@@ -11,7 +11,26 @@ describe("diferentes selectores ",() =>{
 
     })
 
-    it("selector por atributo ", ()=>{
+    it("selector por atributo", ()=>{
         cy.visit("https://demoqa.com/text-box")
+    })
+
+    it("selector por contain", ()=>{
+        cy.visit("https://demoqa.com/automation-practice-form")
+        cy.title().should('eq', 'ToolsQA')
+        cy.wait(1000)
+
+        cy.get(".custom-control-label").contains("Female").click()
+        wait(1000)
+        cy.get(".custom-control-label").contains("Other").click()
+
+        it("selector por copy selector", ()=>{
+            cy.visit("https://demoqa.com/automation-practice-form")
+            cy.title().should('eq', 'ToolsQA')
+            cy.wait(1000)
+    
+            cy.get("#userNumber").should("be.visible").type("5491140404040")
+            wait(1000)
+             
     })
 }) //cierre de describe
